@@ -1,0 +1,840 @@
+- id: '1723250534962'
+  alias: Turn on all living room lights
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: c82e371076b0f4a49c46f24ae77a12d2
+    entity_id: eafec249518365fbd9f9b401e51e7330
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 2c330a815aceb431258322f157e6d031
+    entity_id: 531522e45d7397532fd2e7ac19779a8b
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 6bf0e8e6951c0eee892fbdc45fa6a95c
+    entity_id: ec5941e9ddd072ca184a8b1b31659566
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 040ed2805391b77096fa2323788f2518
+    entity_id: a442f8cdf06f4d3b1cfe1472f5b7c5c0
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 098df980a4665989e4e7fe3b3241ec92
+    entity_id: 26c0f0adcd5e633a4249c709d30045ab
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 93345e348ac20d55cad972c348a891e7
+    entity_id: c1131d56b4e82873f2ed5e1bee284479
+    domain: light
+    brightness_pct: 100
+  mode: single
+- id: '1723250584761'
+  alias: Turn off living room
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: c82e371076b0f4a49c46f24ae77a12d2
+    entity_id: eafec249518365fbd9f9b401e51e7330
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 2c330a815aceb431258322f157e6d031
+    entity_id: 531522e45d7397532fd2e7ac19779a8b
+    domain: light
+  - type: turn_off
+    device_id: 6bf0e8e6951c0eee892fbdc45fa6a95c
+    entity_id: ec5941e9ddd072ca184a8b1b31659566
+    domain: light
+  - type: turn_off
+    device_id: 040ed2805391b77096fa2323788f2518
+    entity_id: a442f8cdf06f4d3b1cfe1472f5b7c5c0
+    domain: light
+  - type: turn_off
+    device_id: 098df980a4665989e4e7fe3b3241ec92
+    entity_id: 26c0f0adcd5e633a4249c709d30045ab
+    domain: light
+  - type: turn_off
+    device_id: 93345e348ac20d55cad972c348a891e7
+    entity_id: c1131d56b4e82873f2ed5e1bee284479
+    domain: light
+  mode: single
+- id: '1723251424004'
+  alias: test
+  description: ''
+  trigger:
+  - platform: event
+    event_type: insteon.button_on
+    event_data:
+      address: 3f05e1
+      button: a
+  condition: []
+  action:
+  - type: turn_off
+    device_id: c82e371076b0f4a49c46f24ae77a12d2
+    entity_id: eafec249518365fbd9f9b401e51e7330
+    domain: light
+  mode: single
+- id: '1724268520869'
+  alias: Turn on outdoor lights
+  description: ''
+  triggers:
+  - event: sunset
+    offset: 0
+    trigger: sun
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 6a547ea5471f46a8e92cc0c34d79206d
+    entity_id: 2bceef222c7e1831170f242580d49b8c
+    domain: switch
+  - type: turn_on
+    device_id: 427e036ef6f661e67521a060e7626ebc
+    entity_id: 62951a1752140a399f0a1e1eb1498d47
+    domain: switch
+  - type: turn_on
+    device_id: b9c790d81d19fa40fee46963fe44e8c6
+    entity_id: 1025d3b0c7121c1a6156cbe775eec441
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: a7844732219d037a1a5bbe7f760c509f
+    entity_id: 9ae92f69297dc0055dbc8f865aaf6d9e
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 919573412556bc87655c2ae6c417203b
+    entity_id: 93bf4aab18c093d8cbe24fd1b0100504
+    domain: switch
+    enabled: false
+  - type: turn_on
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 9ea1ba9754397aa043af53edce224388
+    domain: switch
+    enabled: false
+  - type: turn_on
+    device_id: 8119d541306af88edbb1ea2f6f253854
+    entity_id: f439d2e364b2ab5115a3fa7d9bf0932d
+    domain: switch
+    enabled: false
+  - type: turn_on
+    device_id: f1c0b472d5f3f25b558623c7464168a4
+    entity_id: 663809eca9e26a5cc5a477bb91be7b68
+    domain: switch
+    enabled: false
+  - type: turn_on
+    device_id: 89277d8bdc189be539cb146acc221007
+    entity_id: 256f1b2856ca02310c7c26f11866bb0f
+    domain: switch
+    enabled: false
+  - type: turn_on
+    device_id: 78c88391c969b706452388261fbbb7ac
+    entity_id: 5612715f54f5cafa71de456b651236dc
+    domain: switch
+    enabled: false
+  - type: turn_on
+    device_id: cc25946103371baff1598e427869a430
+    entity_id: 8780f42247b798c541cef2688232a3a4
+    domain: light
+    enabled: false
+  - type: turn_on
+    device_id: 613375417b4c81fa4b125593b1cd22cc
+    entity_id: fa3e6de7c2cd83c0800a88305435c27d
+    domain: light
+    enabled: false
+  - type: turn_on
+    device_id: 938b0e8c1a6f5845393bdcae7f569d1a
+    entity_id: 9da2358d5e4f25d5b7f5d725e401e105
+    domain: switch
+    enabled: false
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.keypad_dimmer_46_30_8f_button_h
+    enabled: false
+  mode: single
+- id: '1724268643474'
+  alias: Turn off outdoor lights
+  description: ''
+  triggers:
+  - at: 00:00:00
+    trigger: time
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 6a547ea5471f46a8e92cc0c34d79206d
+    entity_id: 2bceef222c7e1831170f242580d49b8c
+    domain: switch
+  - type: turn_off
+    device_id: 427e036ef6f661e67521a060e7626ebc
+    entity_id: 62951a1752140a399f0a1e1eb1498d47
+    domain: switch
+  - type: turn_off
+    device_id: b9c790d81d19fa40fee46963fe44e8c6
+    entity_id: 1025d3b0c7121c1a6156cbe775eec441
+    domain: light
+  - type: turn_off
+    device_id: a7844732219d037a1a5bbe7f760c509f
+    entity_id: 9ae92f69297dc0055dbc8f865aaf6d9e
+    domain: light
+  - type: turn_off
+    device_id: 919573412556bc87655c2ae6c417203b
+    entity_id: 93bf4aab18c093d8cbe24fd1b0100504
+    domain: switch
+    enabled: false
+  - type: turn_off
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 9ea1ba9754397aa043af53edce224388
+    domain: switch
+    enabled: false
+  - type: turn_off
+    device_id: 8119d541306af88edbb1ea2f6f253854
+    entity_id: f439d2e364b2ab5115a3fa7d9bf0932d
+    domain: switch
+    enabled: false
+  - type: turn_off
+    device_id: f1c0b472d5f3f25b558623c7464168a4
+    entity_id: 663809eca9e26a5cc5a477bb91be7b68
+    domain: switch
+    enabled: false
+  - type: turn_off
+    device_id: 78c88391c969b706452388261fbbb7ac
+    entity_id: 5612715f54f5cafa71de456b651236dc
+    domain: switch
+    enabled: false
+  - type: turn_off
+    device_id: 89277d8bdc189be539cb146acc221007
+    entity_id: 256f1b2856ca02310c7c26f11866bb0f
+    domain: switch
+    enabled: false
+  - type: turn_off
+    device_id: cc25946103371baff1598e427869a430
+    entity_id: 8780f42247b798c541cef2688232a3a4
+    domain: light
+    enabled: true
+  - type: turn_off
+    device_id: 613375417b4c81fa4b125593b1cd22cc
+    entity_id: fa3e6de7c2cd83c0800a88305435c27d
+    domain: light
+    enabled: true
+  - type: turn_off
+    device_id: 938b0e8c1a6f5845393bdcae7f569d1a
+    entity_id: 9da2358d5e4f25d5b7f5d725e401e105
+    domain: switch
+    enabled: false
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.keypad_dimmer_46_30_8f_button_h
+    enabled: false
+  mode: single
+- id: '1724268895603'
+  alias: Turn on small lamp living room
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 9ea1ba9754397aa043af53edce224388
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 919573412556bc87655c2ae6c417203b
+    entity_id: 93bf4aab18c093d8cbe24fd1b0100504
+    domain: switch
+  - type: turn_on
+    device_id: 8119d541306af88edbb1ea2f6f253854
+    entity_id: f439d2e364b2ab5115a3fa7d9bf0932d
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1724268933707'
+  alias: Turn off small lamp (living room)
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 9ea1ba9754397aa043af53edce224388
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 919573412556bc87655c2ae6c417203b
+    entity_id: 93bf4aab18c093d8cbe24fd1b0100504
+    domain: switch
+  - type: turn_off
+    device_id: 8119d541306af88edbb1ea2f6f253854
+    entity_id: f439d2e364b2ab5115a3fa7d9bf0932d
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1724268989543'
+  alias: Turn off tall lamp (living room)
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 0df8abed3cb455c559a38153177c7de2
+    domain: switch
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 098df980a4665989e4e7fe3b3241ec92
+    entity_id: 26c0f0adcd5e633a4249c709d30045ab
+    domain: light
+  mode: single
+- id: '1724269048441'
+  alias: Turn on tall lamp (living room)
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 0df8abed3cb455c559a38153177c7de2
+    domain: switch
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 098df980a4665989e4e7fe3b3241ec92
+    entity_id: 26c0f0adcd5e633a4249c709d30045ab
+    domain: light
+    brightness_pct: 100
+  mode: single
+- id: '1724272144924'
+  alias: Turn off all basement
+  description: ''
+  triggers:
+  - trigger: time
+    at: 00:00:00
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id:
+      - basement
+      - dining_room
+      - living_room
+      - family_room
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id:
+      - basement
+      - living_room
+      - family_room
+  mode: single
+- id: '1729303268267'
+  alias: Turn off all front switch
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: cc25946103371baff1598e427869a430
+    entity_id: 8780f42247b798c541cef2688232a3a4
+    domain: light
+    trigger: device
+    enabled: false
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id:
+      - basement
+      - dining_room
+      - living_room
+      - family_room
+      - main_bedroom
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id:
+      - basement
+      - living_room
+      - family_room
+  mode: single
+- id: '1730772206240'
+  alias: Turn off bathroom lights
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 0bbe3f9c7764f266abb8828c67dff957
+    entity_id: 60af356f0c600c2a4e1e58754329ad2a
+    domain: light
+    trigger: device
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 0bbe3f9c7764f266abb8828c67dff957
+    entity_id: 60af356f0c600c2a4e1e58754329ad2a
+    domain: light
+  mode: single
+- id: '1733680182801'
+  alias: Turn on ozempic tree
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 89277d8bdc189be539cb146acc221007
+    entity_id: 256f1b2856ca02310c7c26f11866bb0f
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: 78c88391c969b706452388261fbbb7ac
+    entity_id: 5612715f54f5cafa71de456b651236dc
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: f1c0b472d5f3f25b558623c7464168a4
+    entity_id: 663809eca9e26a5cc5a477bb91be7b68
+    domain: switch
+  mode: single
+- id: '1733680234547'
+  alias: Turn off ozempic tree
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: 89277d8bdc189be539cb146acc221007
+    entity_id: 256f1b2856ca02310c7c26f11866bb0f
+    domain: switch
+    trigger: device
+  - type: turned_off
+    device_id: 78c88391c969b706452388261fbbb7ac
+    entity_id: 5612715f54f5cafa71de456b651236dc
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: f1c0b472d5f3f25b558623c7464168a4
+    entity_id: 663809eca9e26a5cc5a477bb91be7b68
+    domain: switch
+  mode: single
+- id: '1733680815238'
+  alias: Turn on family room lamp
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 89277d8bdc189be539cb146acc221007
+    entity_id: 8ff16ab14f834555424a34e062b12e4c
+    domain: switch
+    trigger: device
+  - type: turned_on
+    device_id: 78c88391c969b706452388261fbbb7ac
+    entity_id: d0b9f1ade135fcf2f9416a1d2ae24c4b
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 098df980a4665989e4e7fe3b3241ec92
+    entity_id: 26c0f0adcd5e633a4249c709d30045ab
+    domain: light
+  mode: single
+- id: '1733680856458'
+  alias: Turn off family room lamp
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: 89277d8bdc189be539cb146acc221007
+    entity_id: 8ff16ab14f834555424a34e062b12e4c
+    domain: switch
+    trigger: device
+  - type: turned_off
+    device_id: 78c88391c969b706452388261fbbb7ac
+    entity_id: d0b9f1ade135fcf2f9416a1d2ae24c4b
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 098df980a4665989e4e7fe3b3241ec92
+    entity_id: 26c0f0adcd5e633a4249c709d30045ab
+    domain: light
+  mode: single
+- id: '1736105608982'
+  alias: NFC Reader - Plex
+  description: Plays Plex movies when NFC tags are scanned
+  triggers:
+  - event_type: tag_scanned
+    trigger: event
+  conditions: []
+  actions:
+  - variables:
+      NFC_MAPPING:
+        07-B6-3D-02:
+          name: Frozen
+          plex_id: 2535
+        04-D1-BF-50-24-02-89:
+          name: Moana
+          plex_id: 2566
+  - if:
+    - condition: template
+      value_template: '{{ trigger.event.data.tag_id in NFC_MAPPING }}'
+    then:
+    - if:
+      - condition: state
+        entity_id: media_player.living_room_atv
+        state: idle
+      then:
+      - target:
+          entity_id: media_player.living_room_atv
+        action: media_player.turn_on
+        data: {}
+      - delay:
+          seconds: 5
+    - if:
+      - condition: template
+        value_template: '{{ ''plex_id'' in NFC_MAPPING[trigger.event.data.tag_id]
+          }}'
+      then:
+      - target:
+          entity_id: media_player.living_room_atv
+        data:
+          media_content_type: url
+          media_content_id: "plex://play/?metadataKey=%2Flibrary%2Fmetadata%2F{{ \n
+            \ NFC_MAPPING[trigger.event.data.tag_id].plex_id \n}}&server=14b5b275400fbfa3ba1703a42012d2de1d719121"
+        action: media_player.play_media
+  mode: single
+- id: '1739122800796'
+  alias: Office lamp
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 3c4c88025ee3654118312694b7402fca
+    entity_id: 991a2dba208db0ed9d851e134603b101
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 8119d541306af88edbb1ea2f6f253854
+    entity_id: f439d2e364b2ab5115a3fa7d9bf0932d
+    domain: switch
+  mode: single
+- id: '1739122868129'
+  alias: Turn off office lamp
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: 3c4c88025ee3654118312694b7402fca
+    entity_id: 991a2dba208db0ed9d851e134603b101
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 8119d541306af88edbb1ea2f6f253854
+    entity_id: f439d2e364b2ab5115a3fa7d9bf0932d
+    domain: switch
+  mode: single
+- id: '1762137715211'
+  alias: Basement motion detection
+  description: ''
+  triggers:
+  - type: motion
+    device_id: b4c692a4be942d86c3895d4d51ae4c3d
+    entity_id: 867f4f45d4cc9068a727673625394a9c
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  conditions:
+  - condition: device
+    type: is_off
+    device_id: 181327265b7c75044ec24c48153c9647
+    entity_id: b6947b464ed7182a6dd26ab4be6bbf8d
+    domain: light
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  actions:
+  - type: turn_on
+    device_id: 181327265b7c75044ec24c48153c9647
+    entity_id: b6947b464ed7182a6dd26ab4be6bbf8d
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: a9274bcecde38e7a51da3d7a03f5b8bb
+    entity_id: 1196b01b1c51a617909fea2ec8646531
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 181327265b7c75044ec24c48153c9647
+    entity_id: dbde3fc6f21e5303ddec9385fff2ca90
+    domain: switch
+  - type: turn_on
+    device_id: 07e5f360cbd031fae8835a22235087bf
+    entity_id: cceb64703fa0b5950fe55c19afdcd1e3
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 07e5f360cbd031fae8835a22235087bf
+    entity_id: 595707f80a66f9771d2d26bedb1c8f38
+    domain: switch
+  - choose:
+    - conditions:
+      - condition: time
+        after: 08:00:00
+        before: 09:30:00
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      sequence:
+      - type: turn_on
+        device_id: 181327265b7c75044ec24c48153c9647
+        entity_id: 65c754c97375d75dadf9972eaacb0264
+        domain: switch
+      - type: turn_on
+        device_id: d9bba62b640a4e130e719d5ce172ce96
+        entity_id: 8c8140637ce927ed622dc9a5724dc874
+        domain: light
+        brightness_pct: 100
+      - type: turn_on
+        device_id: 181327265b7c75044ec24c48153c9647
+        entity_id: bf770e9010a8cd60c3217e841f6fdf66
+        domain: switch
+      - type: turn_on
+        device_id: 6c98b0d7dbca6105a217ada529839b3d
+        entity_id: 1a3ee7275f9fd511560142aaae9bca15
+        domain: light
+        brightness_pct: 80
+  - action: notify.mobile_app_andys_iphone
+    metadata: {}
+    data:
+      message: Test
+      title: Test2
+      data: data detected
+  mode: single
+- id: '1762205350527'
+  alias: Turn off shower
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 03b0820074fc5eb1e7c83a8b2349f76a
+    entity_id: df5f5e77f78c3ee7edbd9cb1e822b717
+    domain: switch
+    trigger: device
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 03b0820074fc5eb1e7c83a8b2349f76a
+    entity_id: df5f5e77f78c3ee7edbd9cb1e822b717
+    domain: switch
+  mode: single
+- id: '1762654686350'
+  alias: Turn off basement lights when nobody is there
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 0343aec4d5f8acc8bfc9dfa08f4d34c7
+    entity_id: 6e3d64fd9714cce540bc19bf1418a27b
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  conditions:
+  - condition: state
+    entity_id: media_player.lg_webos_tv_b649
+    state:
+    - unavailable
+  actions:
+  - type: turn_off
+    device_id: a9274bcecde38e7a51da3d7a03f5b8bb
+    entity_id: 1196b01b1c51a617909fea2ec8646531
+    domain: light
+  - type: turn_off
+    device_id: 181327265b7c75044ec24c48153c9647
+    entity_id: b6947b464ed7182a6dd26ab4be6bbf8d
+    domain: light
+  - type: turn_off
+    device_id: 181327265b7c75044ec24c48153c9647
+    entity_id: dbde3fc6f21e5303ddec9385fff2ca90
+    domain: switch
+  mode: single
+- id: '1762897401476'
+  alias: Turn on basement hallway light from motion
+  description: ''
+  triggers:
+  - type: motion
+    device_id: 191a1809f801ab4bb5eced77c7b10a03
+    entity_id: 001941a66b65c1df5ed4e66bd184bbf8
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: device
+    type: is_off
+    device_id: d9bba62b640a4e130e719d5ce172ce96
+    entity_id: 8c8140637ce927ed622dc9a5724dc874
+    domain: light
+  actions:
+  - type: turn_on
+    device_id: d9bba62b640a4e130e719d5ce172ce96
+    entity_id: 8c8140637ce927ed622dc9a5724dc874
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 181327265b7c75044ec24c48153c9647
+    entity_id: 65c754c97375d75dadf9972eaacb0264
+    domain: switch
+  - type: turn_on
+    device_id: 07e5f360cbd031fae8835a22235087bf
+    entity_id: 89e09a25bf0adb895e068ed0ea64ac16
+    domain: switch
+  mode: single
+- id: '1762897458233'
+  alias: Turn off basement hallway lights when no motion
+  description: ''
+  triggers:
+  - type: no_motion
+    device_id: 191a1809f801ab4bb5eced77c7b10a03
+    entity_id: 001941a66b65c1df5ed4e66bd184bbf8
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  conditions:
+  - condition: device
+    type: is_on
+    device_id: d9bba62b640a4e130e719d5ce172ce96
+    entity_id: 8c8140637ce927ed622dc9a5724dc874
+    domain: light
+  actions:
+  - type: turn_off
+    device_id: d9bba62b640a4e130e719d5ce172ce96
+    entity_id: 8c8140637ce927ed622dc9a5724dc874
+    domain: light
+  - type: turn_off
+    device_id: 181327265b7c75044ec24c48153c9647
+    entity_id: 65c754c97375d75dadf9972eaacb0264
+    domain: switch
+  - type: turn_off
+    device_id: 07e5f360cbd031fae8835a22235087bf
+    entity_id: 89e09a25bf0adb895e068ed0ea64ac16
+    domain: switch
+  mode: single
+- id: '1763927494264'
+  alias: Turn on storage light
+  description: ''
+  triggers:
+  - type: unsafe
+    device_id: e87cc33c82dbd04ee92d300fbddc5fda
+    entity_id: 1617dac8258fdd7d603b609982e47414
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.switchlinc_relay_dual_band_3d_1f_0a
+  mode: single
+- id: '1763927590875'
+  alias: Turn off storage
+  description: ''
+  triggers:
+  - type: not_unsafe
+    device_id: e87cc33c82dbd04ee92d300fbddc5fda
+    entity_id: 1617dac8258fdd7d603b609982e47414
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.switchlinc_relay_dual_band_3d_1f_0a
+  mode: single
+- id: '1765136831211'
+  alias: 'Turn on Christmas tree '
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 0df8abed3cb455c559a38153177c7de2
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 938b0e8c1a6f5845393bdcae7f569d1a
+    entity_id: 9da2358d5e4f25d5b7f5d725e401e105
+    domain: switch
+  mode: single
+- id: '1765136872999'
+  alias: Turn off Christmas tree
+  description: ''
+  triggers:
+  - type: turned_off
+    device_id: d71e897542399486f39f4e14700fc4ed
+    entity_id: 0df8abed3cb455c559a38153177c7de2
+    domain: switch
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 938b0e8c1a6f5845393bdcae7f569d1a
+    entity_id: 9da2358d5e4f25d5b7f5d725e401e105
+    domain: switch
+  mode: single
+- id: '1774200390748'
+  alias: 'Safety: Water Leak Detection'
+  description: Notifies if water flow is high for too long or never hits zero.
+  triggers:
+  - entity_id: sensor.water_flow_rate
+    above: 5
+    for:
+      minutes: 30
+    id: high_flow
+    trigger: numeric_state
+  - entity_id: sensor.water_flow_rate
+    above: 0.1
+    for:
+      hours: 3
+    id: continuous_flow
+    trigger: numeric_state
+  actions:
+  - action: notify.mobile_app_andys_iphone
+    data:
+      message: Water leak!
+      title: Water leak
+  mode: restart

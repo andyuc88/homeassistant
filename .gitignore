@@ -1,0 +1,24 @@
+# Secrets
+secrets.yaml
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+
+# Log files
+*.log
+*.log.*
+*.fault
+
+# Directories to ignore
+.storage/
+.cloud/
+deps/
+tts/
+
+# Temporary and locked files
+.ha_run.lock
+
+# OS generated files
+.DS_Store

@@ -1,0 +1,17 @@
+pihole:
+  alias: Pihole
+  sequence:
+  - type: turn_off
+    device_id: 4fa8bb3758a9e238e95ca2c8b0484581
+    entity_id: 3285480a19d7d239e39e5a324d0e6dac
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - type: turn_on
+    device_id: 4fa8bb3758a9e238e95ca2c8b0484581
+    entity_id: 3285480a19d7d239e39e5a324d0e6dac
+    domain: switch
+  description: ''
