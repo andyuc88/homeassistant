@@ -628,12 +628,6 @@
         entity_id: 1a3ee7275f9fd511560142aaae9bca15
         domain: light
         brightness_pct: 80
-  - action: notify.mobile_app_andys_iphone
-    metadata: {}
-    data:
-      message: Test
-      title: Test2
-      data: data detected
   mode: single
 - id: '1762205350527'
   alias: Turn off shower
@@ -658,35 +652,88 @@
 - id: '1762654686350'
   alias: Turn off basement lights when nobody is there
   description: ''
-  triggers:
-  - type: not_occupied
-    device_id: 0343aec4d5f8acc8bfc9dfa08f4d34c7
-    entity_id: 6e3d64fd9714cce540bc19bf1418a27b
-    domain: binary_sensor
-    trigger: device
-    for:
-      hours: 0
-      minutes: 30
-      seconds: 0
-  conditions:
-  - condition: state
-    entity_id: media_player.lg_webos_tv_b649
-    state:
-    - unavailable
-  actions:
-  - type: turn_off
-    device_id: a9274bcecde38e7a51da3d7a03f5b8bb
-    entity_id: 1196b01b1c51a617909fea2ec8646531
-    domain: light
-  - type: turn_off
-    device_id: 181327265b7c75044ec24c48153c9647
-    entity_id: b6947b464ed7182a6dd26ab4be6bbf8d
-    domain: light
-  - type: turn_off
-    device_id: 181327265b7c75044ec24c48153c9647
-    entity_id: dbde3fc6f21e5303ddec9385fff2ca90
-    domain: switch
   mode: single
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_detector_radar_still_target
+    - binary_sensor.motion_sensor_bike_motion_detection
+    - binary_sensor.motion_sensor_bike2_motion_detection
+    to: 'on'
+    id: turn_on
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_detector_radar_still_target
+    - binary_sensor.motion_sensor_bike_motion_detection
+    - binary_sensor.motion_sensor_bike2_motion_detection
+    to: 'off'
+    for:
+      minutes: 5
+    id: turn_off
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: turn_on
+      sequence:
+      - type: turn_on
+        device_id: a9274bcecde38e7a51da3d7a03f5b8bb
+        entity_id: 1196b01b1c51a617909fea2ec8646531
+        domain: light
+        brightness_pct: 100
+      - type: turn_on
+        device_id: 181327265b7c75044ec24c48153c9647
+        entity_id: b6947b464ed7182a6dd26ab4be6bbf8d
+        domain: light
+        brightness_pct: 100
+      - type: turn_on
+        device_id: 181327265b7c75044ec24c48153c9647
+        entity_id: dbde3fc6f21e5303ddec9385fff2ca90
+        domain: switch
+      - type: turn_on
+        device_id: 07e5f360cbd031fae8835a22235087bf
+        entity_id: cceb64703fa0b5950fe55c19afdcd1e3
+        domain: light
+        brightness_pct: 100
+      - type: turn_on
+        device_id: 07e5f360cbd031fae8835a22235087bf
+        entity_id: 595707f80a66f9771d2d26bedb1c8f38
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id: turn_off
+      - condition: state
+        entity_id:
+        - binary_sensor.motion_detector_radar_still_target
+        - binary_sensor.motion_sensor_bike_motion_detection
+        - binary_sensor.motion_sensor_bike2_motion_detection
+        state: 'off'
+      - condition: state
+        entity_id: media_player.lg_webos_tv_b649
+        state:
+        - unavailable
+      sequence:
+      - type: turn_off
+        device_id: a9274bcecde38e7a51da3d7a03f5b8bb
+        entity_id: 1196b01b1c51a617909fea2ec8646531
+        domain: light
+      - type: turn_off
+        device_id: 181327265b7c75044ec24c48153c9647
+        entity_id: b6947b464ed7182a6dd26ab4be6bbf8d
+        domain: light
+      - type: turn_off
+        device_id: 181327265b7c75044ec24c48153c9647
+        entity_id: dbde3fc6f21e5303ddec9385fff2ca90
+        domain: switch
+      - type: turn_off
+        device_id: 07e5f360cbd031fae8835a22235087bf
+        entity_id: cceb64703fa0b5950fe55c19afdcd1e3
+        domain: light
+      - type: turn_off
+        device_id: 07e5f360cbd031fae8835a22235087bf
+        entity_id: 595707f80a66f9771d2d26bedb1c8f38
+        domain: switch
 - id: '1762897401476'
   alias: Turn on basement hallway light from motion
   description: ''
@@ -823,18 +870,121 @@
   - entity_id: sensor.water_flow_rate
     above: 5
     for:
-      minutes: 30
+      minutes: 45
     id: high_flow
     trigger: numeric_state
   - entity_id: sensor.water_flow_rate
-    above: 0.1
+    above: 0.5
     for:
-      hours: 3
+      hours: 4
     id: continuous_flow
     trigger: numeric_state
+  conditions:
   actions:
   - action: notify.mobile_app_andys_iphone
     data:
-      message: Water leak!
-      title: Water leak
+      title: ⚠️ Water Leak Warning
+      message: "{% if trigger.id == 'high_flow' %}\n  High water flow detected for
+        over 45 minutes! Check the showers and hoses.\n{% elif trigger.id == 'continuous_flow'
+        %}\n  Continuous water flow detected for over 4 hours! Check for running toilets
+        or leaks.\n{% else %}\n  Water leak detected!\n{% endif %}\n"
   mode: restart
+- id: '1734567890123'
+  alias: Automate indoor garage lights
+  description: Turn on when door opens, turn off when door closes or after 30 minutes
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.garage_door_1_intrusion
+    - binary_sensor.garage_door_2_intrusion
+    from: 'off'
+    to: 'on'
+    id: door_opened
+  - trigger: state
+    entity_id:
+    - binary_sensor.garage_door_1_intrusion
+    - binary_sensor.garage_door_2_intrusion
+    from: 'on'
+    to: 'off'
+    id: door_closed
+  - trigger: state
+    entity_id:
+    - light.switchlinc_dimmer_4b_90_3a
+    - light.switchlinc_dimmer_4b_a6_66
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 30
+    id: timeout
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: door_opened
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id:
+          - light.switchlinc_dimmer_4b_90_3a
+          - light.switchlinc_dimmer_4b_a6_66
+    - conditions:
+      - condition: trigger
+        id: door_closed
+      - condition: state
+        entity_id: binary_sensor.garage_door_1_intrusion
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.garage_door_2_intrusion
+        state: 'off'
+      sequence:
+      - action: light.turn_off
+        target:
+          entity_id:
+          - light.switchlinc_dimmer_4b_90_3a
+          - light.switchlinc_dimmer_4b_a6_66
+    - conditions:
+      - condition: trigger
+        id: timeout
+      sequence:
+      - action: light.turn_off
+        target:
+          entity_id:
+          - light.switchlinc_dimmer_4b_90_3a
+          - light.switchlinc_dimmer_4b_a6_66
+  mode: queued
+- id: '1780000000001'
+  alias: 'Safety: Freeze Sensor Warning'
+  description: Notifies if freeze sensors detect underheat.
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.flood_freeze_sensor_underheat_detected
+    - binary_sensor.flood_freeze_sensor_workroom_underheat_detected
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: notify.mobile_app_andys_iphone
+    data:
+      title: ❄️ Freeze Warning
+      message: 'A freeze sensor has detected freezing temperatures: {{ trigger.to_state.name }}'
+  mode: single
+
+- id: '1780000000002'
+  alias: 'Safety: Flood Sensor Warning'
+  description: Notifies if flood sensors detect a water leak.
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.flood_freeze_sensor_water_leak_detected
+    - binary_sensor.flood_freeze_sensor_workroom_water_leak_detected
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: notify.mobile_app_andys_iphone
+    data:
+      title: 💧 Flood Warning
+      message: 'A flood sensor has detected a water leak: {{ trigger.to_state.name }}'
+  mode: single
